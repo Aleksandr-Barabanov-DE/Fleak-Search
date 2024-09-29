@@ -33,7 +33,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: var(--page-padding);
-  gap: 10px;
+  gap: 11px;
 }
 
 .page::before {
