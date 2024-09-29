@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-image: url(./images/background.jpg);
+  --main-font: "Baskervville SC", serif;
+  --title-size: clamp(2.375rem, 1.8929rem + 2.4107vw, 4.0625rem);
+  --page-padding: 10px;
+  --margin-left: 15vw;
+  --border-radius: none;
+  --item-background: #3333337f;
+  --item-title-size: clamp(1.5625rem, 1.4196rem + 0.7143vw, 2.0625rem);
+  --selection-color: #ff8000;
+  --input-font-size: clamp(0.8125rem, 0.6875rem + 0.625vw, 1.25rem);
+}
+body {
+  background-color: var(--item-background);
+}
+.page {
+  position: relative;
+  background-image: var(--background-image);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 200vh;
+  background-position: center;
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  padding: var(--page-padding);
+  gap: 10px;
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  z-index: 0;
+}
+
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  display: flex;
+}
+
+.title {
+  font-size: var(--title-size);
+  margin-left: var(--margin-left);
+  position: relative;
+}
+
+.title::before {
+  content: url(./icons/logo.png.png);
+  position: absolute;
+  top: 0;
+  left: -90px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.input {
+  max-width: 400px;
+  margin: 0px var(--margin-left);
+  padding: 10px 10px 10px 40px;
+  font-size: var(--input-font-size);
+  font-family: var(--main-font);
+  border: 2px solid #333;
+  border-radius: var(--border-radius);
+  outline: none;
+  background: url("./icons/search\ icon.png") no-repeat 10px center, #fff;
+  background-size: 20px 20px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  color: #000000;
+}
+
+.input:focus {
+  border-color: var(--selection-color);
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+  background: url("./icons/search\ icon\ active.png") no-repeat 10px center,
+    #fff;
+  background-size: 20px 20px;
+}
+
+.container {
+  justify-content: center;
+  margin: 10px 2vw;
+  min-height: 50vh;
+  border-radius: var(--border-radius);
+  gap: 30px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: var(--item-background);
+  border-radius: var(--border-radius);
+  color: #ffffff;
+  max-width: 380px;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.item:hover {
+  transform: scale(1.02);
+}
+
+.item:hover .item-title {
+  color: var(--selection-color);
+}
+
+.item-header {
+  display: flex;
+  align-items: center;
+}
+
+.item-title {
+  font-size: var(--item-title-size);
+  text-align: center;
+}
+
+.item-image {
+  border-radius: var(--border-radius);
+  max-width: 320px;
+}
+
+.item-link {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 5px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+  gap: 5px;
+}
+
+.item-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 0px;
+  height: 0px;
+  transition: all 0.5s ease-in-out;
+}
+
+.item-button::before {
+  content: url(./icons/star.svg);
+  position: absolute;
+  top: 80px;
+  right: 40px;
+  width: 20px;
+  height: 20px;
+}
+
+.item-button.is-liked::before {
+  content: url(./icons/star-liked.svg);
+}
+
+.item-description {
+  overflow: hidden;
+}
+
+.card-footer {
+  height: auto;
+}
+
+@media (max-width: 424px) {
+  .item {
+    max-width: 300px;
+  }
+
+  .item-image {
+    max-width: 280px;
+  }
+  .header {
+    align-items: center;
+    justify-content: center;
+  }
+  .input {
+    align-self: center;
+    min-width: 65vw;
+  }
+}
+
+@media (min-width: 426px) and (max-width: 1023px) {
+  .item {
+    max-width: 380px;
+  }
+  .item-image {
+    max-width: 320px;
+  }
+
+  .container {
+    margin: 10px 10px;
+  }
+}
